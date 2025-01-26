@@ -7,15 +7,16 @@ document.addEventListener("alpine:init", () => {
       { id: 3, name: "teh malam ", img: "3.jpg", price: 3000 },
       { id: 4, name: "teh sari murni", img: "4.jpg", price: 22000 },
       { id: 5, name: "teh manis", img: "5.jpg", price: 30000 },
+      { id: 6, name: "lemon tea", img: "6.png", price: 50500 },
     ],
     //untuk data menu
     itemmenu: [
-      { id: 1, name: "expresso pancung", img: "coffe 1.jpg", price: 10000 },
-      { id: 2, name: "natural caffee", img: "coffe 2.jpg", price: 27000 },
-      { id: 3, name: "malam rindu", img: "coffe 3.jpg", price: 34000 },
-      { id: 4, name: "night yard", img: "coffe 4.jpg", price: 25000 },
-      { id: 5, name: "coffe 0_0", img: "coffe 5.jpg", price: 58000 },
-      { id: 6, name: "santay aja", img: "coffe 6.jpg", price: 37000 },
+      { id: 1, name: "expresso pancung", img: "1.jpg", price: 10000 },
+      { id: 2, name: "natural caffee", img: "2.jpg", price: 27000 },
+      { id: 3, name: "malam rindu", img: "3.jpg", price: 34000 },
+      { id: 4, name: "night yard", img: "4.jpg", price: 25000 },
+      { id: 5, name: "coffe madura", img: "5.jpg", price: 58000 },
+      { id: 6, name: "stay coffee ", img: "6.jpg", price: 37000 },
     ],
   }));
   Alpine.store("card", {
@@ -33,7 +34,7 @@ document.addEventListener("alpine:init", () => {
         //setiap masukin barang total nya nambah dgn harga dari item yg di masikin
         this.total += newItem.price;
         // cek item sudah ada di card
-        console.log(this.items);
+        //console.log(this.items);
       } else {
         //jika  barang sudah ada ,cek apakh baram beda atau sama dgn yg di card
         this.items = this.items.map((item) => {
@@ -135,7 +136,7 @@ checkoutButton.addEventListener("click", (e) => {
   const objData = Object.fromEntries(data); //datanya
   //console.log(objData);
   const message = formatMessage(objData);
-  //jalnkan sebuah layana (wa.me) unt kirim pesan wa dgn membyka widow baru
+  //jalnkan sebuah layana (wa.me) unt kirim pesan wa dgn membyka widow baru atas nomor saya
   window.open(
     "http://wa.me/6289523135244/?text=" + encodeURIComponent(message)
   );

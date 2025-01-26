@@ -1,4 +1,3 @@
-````markdown
 # Kedai Kopi Rembulan Malam
 
 ![Kedai Kopi Rembulan Malam](https://via.placeholder.com/1200x600.png?text=Kedai+Kopi+Rembulan+Malam)
@@ -21,10 +20,10 @@
 ## Cara Menggunakan
 
 1. Clone repository ini:
+
    ```bash
    git clone https://github.com/username/kedai-kopi-rembulan-malam.git
    ```
-````
 
 2. Buka folder project:
    ```bash
@@ -34,8 +33,8 @@
 
 ## Screenshot
 
-![Screenshot 1](https://via.placeholder.com/600x400.png?text=Screenshot+1)
-![Screenshot 2](https://via.placeholder.com/600x400.png?text=Screenshot+2)
+![Dashboard](./Screenshot/dashboard.png)
+![Menu](./Screenshot/menu.png)
 
 ## Copyright & Reference
 
