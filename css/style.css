@@ -1,0 +1,655 @@
+:roo {
+  --primary: #5d4037;
+  --bg: #800000;
+  --text: #f5f5dc; /* dan warna text bisa #ffffff */
+}
+* {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  outline: none; /* berguna untuk memberikan style untu form atau buttom */
+  border: none; /* supaya punya kendali atas semua border nya  */
+  text-decoration: none; /*supaya tidak ada garis baah ketika bikin link*/
+}
+html {
+  scroll-behavior: smooth !important;
+}
+body {
+  font-family: "Poppint", sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 7%; /* rem = relatif 16px contoh 2 x 16 px dan space akan selalu mempertahankan 7%*/
+  background-color: rgba(62, 39, 35, 1);
+  border-bottom: 1px solid var(--primary);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+.navbar .navbar-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #eaeaea;
+  font-style: italic;
+}
+.navbar .navbar-logo span {
+  color: #8d6458;
+}
+.navbar .navbar-nav a {
+  color: #eaeaea;
+  display: inline-block;
+  font-size: 1.2rem;
+  margin: 0 1rem;
+}
+.navbar .navbar-nav a:hover {
+  color: var(--primary);
+}
+.navbar .navbar-nav a::after {
+  content: "";
+  display: block;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem solid #f5f5dc;
+  transform: scaleX(0);
+  transition: 0.2s;
+}
+.navbar .navbar-nav a:hover::after {
+  transform: scaleX(1);
+}
+.navbar .navbar-extra a {
+  color: #f5f5dc;
+  margin: 0 0.5rem;
+}
+#hamburger-menu {
+  display: none; /* hilang dulu dalam bentuk destop*/
+}
+
+/* navbar search form*/
+.navbar .search-form {
+  position: absolute;
+  top: 100%;
+  right: 7%;
+  background-color: #eaeaee;
+  width: 40rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  transform: scaleY(0); /* awalnya gak ada tingginya alias gak kelihatan */
+  transform-origin: top; /* untuk menentukan sumbunya supaya saat normal lagi bisa seolah olah muncul dari atas */
+  transition: 0.3s;
+}
+.navbar .search-form.active {
+  /* bila tombol search ada class active ini baru munculin dgn js */
+  transform: scaleY(1); /* kembali normal */
+}
+.navbar .search-form input {
+  height: 100%;
+  width: 100%;
+  font-size: 1.2rem;
+  color: #997468;
+  padding: 0.5rem;
+}
+.navbar .search-form label {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #674d45;
+}
+/* Shopping cart */
+#shopping-cart-button {
+  position: relative;
+}
+#shopping-cart-button .quantity-notifition {
+  display: inline-block;
+  padding: 1px 5px;
+  background-color: red;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  position: absolute;
+  top: 0;
+  right: -10px;
+}
+.shopping-card {
+  position: absolute;
+  top: 100%;
+  right: -100%;
+  height: 100vh;
+  width: 35rem;
+  padding: 0 1.5rem;
+  color: #8d6458;
+  background-color: #f9ecdd;
+  transition: 0.3s;
+}
+.shopping-card.active {
+  /*class .active nempel ke shooping-card artinya di js nanti carikan class .active yg berada dlm element si .shopping-card */
+  right: 0;
+}
+.shopping-card .card-item {
+  margin: 2rem 0;
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border-bottom: 2px dashed #474545;
+  position: relative;
+}
+.shopping-card img {
+  height: 4rem;
+  border-radius: 50%;
+}
+.shopping-card h3 {
+  font-size: 1.4rem;
+}
+.shopping-card .item-price {
+  font-size: 1.2rem;
+}
+.shopping-card .card-item #add,
+.shopping-card .card-item #remove {
+  display: inline-block;
+  padding: 1px 5px;
+  cursor: pointer;
+  margin: 0 8px;
+  background-color: #9e9a9a;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.shopping-card h4 {
+  font-size: 1.7rem;
+  margin-top: 1rem;
+}
+/* .checkout-form */
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  border-top: 1rem dashed;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+.form-container h5 {
+  text-align: center;
+  font-size: 1.2rem;
+}
+.form-container form {
+  width: 100%;
+  text-align: center;
+}
+.form-container label {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem 0;
+}
+.form-container span {
+  text-align: right;
+}
+.form-container input {
+  background-color: #efefef;
+  padding: 5px;
+  font-size: 1rem;
+  width: 70%;
+}
+.form-container .checkout-button {
+  padding: 6px 14px;
+  background-color: royalblue;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 10px;
+  margin: 1rem auto;
+  cursor: pointer;
+}
+.form-container .checkout-button.disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+/* .shopping-card .remove-item gak dipakai lagi{
+  position: absolute;
+  cursor: pointer;
+  right: 1rem;
+}
+.shopping-card .remove-item :hover {
+  color: red;
+} */
+
+/* Hero section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-image: url("../img/kopi-navbar.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; /* supaya penuh 1 layar */
+  background-position: center;
+  position: relative; /* supaya tidak menggangu posisi aslinya */
+  mask-image: linear-gradient(
+    rgb(253, 253, 250) 80%,
+    rgba(255, 255, 255, 0)
+  ); /*kebalikan dari linear-gradient*/
+  /* 80% putih dulu baru trnasparan */
+}
+/* .hero::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 30%;
+  bottom: 0;
+  background: linear-gradient(
+    0deg,
+    rgb(253, 253, 250) 8%,
+    rgba(255, 255, 255, 0) 50%
+  );
+} */
+
+.hero .content {
+  padding: 1.4rem 7%;
+  position: fixed;
+  max-width: 55rem;
+  top: 95px;
+}
+.hero .content h1 {
+  font-size: 5rem;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+  line-height: 1;
+}
+.hero .content h1 span {
+  color: #8d6458;
+}
+.hero .content p {
+  font-size: 1.3rem;
+  margin-top: 0.2rem;
+  color: #eaeaea;
+  line-height: 1.2;
+  font-weight: 100;
+  text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+}
+
+.hero .content .cta {
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-size: 1.4rem;
+  color: #eff0e7;
+  background-color: #8d6458;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+}
+.about,
+.menu,
+.products,
+.contact {
+  padding: 10rem 7% 1.4rem;
+}
+.about h2,
+.menu h2,
+.products h2,
+.contact h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+.about h2 span,
+.menu h2 span,
+.products h2 span,
+.contact h2 span {
+  color: #8d6458;
+}
+
+.about .row {
+  display: flex;
+}
+.about .row .about-img {
+  flex: 1 1 45rem;
+}
+.about .row .about-img img {
+  width: 100%;
+  mask-image: url(/svg/2174691.svg);
+  mask-size: 99%;
+  mask-repeat: no-repeat;
+  mask-position: 10% center;
+}
+.about .row .content {
+  flex: 1 1 35rem;
+  padding: 0 1rem;
+}
+.about .row .content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.about .row .content p {
+  margin-top: 1rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.4rem;
+  font-weight: 100;
+  line-height: 1;
+}
+
+.about .row .content h3 {
+  margin-top: 1rem;
+  font-size: 2rem;
+}
+/* menu section */
+
+.menu h2,
+.products h2,
+.contact h2 {
+  margin-bottom: 1rem;
+}
+.menu p,
+.products p,
+.contact p {
+  text-align: center;
+  max-width: 30rem;
+  margin: auto;
+  font-weight: 100;
+  line-height: 1;
+}
+.menu .row {
+  display: flex;
+
+  flex-wrap: wrap;
+  margin-top: 5rem;
+  justify-content: center;
+}
+
+.menu .row .menu-card {
+  text-align: center;
+  padding-bottom: 2rem;
+}
+.menu .row .menu-card img {
+  border: 1rem solid #eaeaea; /* Ukuran border yang diinginkan */
+  border-radius: 50%;
+  width: 55%;
+}
+.menu .row .menu-card .menu-card-title {
+  margin: 1rem auto 0.5rem;
+}
+
+/* Product section*/
+.products .row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+  gap: 1.3rem;
+  margin-top: 4rem;
+}
+.products p span {
+  color: #54bf23;
+  font-weight: 1000;
+}
+.products .product-card {
+  align-items: center;
+  border: 1px solid #8d6458;
+  padding: 2rem;
+}
+.products .product-icons,
+.menu .menu-card .product-icons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.products .product-icons a,
+.menu .menu-card .product-icons a {
+  width: 4rem;
+  height: 4rem;
+  color: #6b6b66;
+  border: 2.5px solid #666;
+  margin: 0.3rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.products .product-icons a :hover,
+.menu .menu-card .product-icons a:hover {
+  color: #8d6458;
+  border: #8d6458;
+}
+.products .product-image,
+.products .product-content {
+  text-align: center;
+}
+.products .product-image img {
+  height: 25rem;
+}
+.products .product-content h4 {
+  font-size: 2.5rem;
+}
+.products .product-stars {
+  font-size: 1.7rem;
+  padding: 0.8rem;
+}
+.products .product-stars .start {
+  fill: #997468;
+}
+.products .product-price {
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+/* contact */
+.contact .row {
+  display: flex;
+  background-color: #5d4037;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.contact .row .map {
+  flex: 1 1 45rem;
+  width: 100%;
+  object-fit: cover;
+}
+.contact .row form {
+  flex: 1 1 45rem;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+.contact .row form .input-group {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  background-color: var(--primary);
+  border: 1px solid #eee;
+  box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.2);
+  padding-left: 2rem;
+}
+
+.contact .row form .input-group li {
+  display: flex;
+  align-items: center;
+}
+.contact .row form .input-group input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  background: white;
+}
+.contact .row form button {
+  margin-top: 3rem;
+  display: inline;
+  font-size: 1.3rem;
+  padding: 1.3rem;
+  cursor: pointer;
+  color: #fff;
+  background-color: #8d6458;
+  box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.2);
+}
+/* footer */
+footer {
+  background-color: #997468;
+  padding: 1rem 10% 3rem;
+  margin-top: 3rem;
+}
+footer .socials {
+  padding: 1rem 0;
+}
+footer .socials a {
+  color: #eaeaea;
+  margin: 1rem;
+}
+footer .socials a :hover,
+footer .credit a:hover,
+footer .links a :hover {
+  color: #674d45;
+}
+
+footer .links {
+  margin-bottom: 1.4rem;
+}
+footer .links a {
+  color: #fff;
+  padding: 0.5rem 1rem;
+}
+footer .credit {
+  padding-left: 1rem;
+  font-size: 0.8rem;
+}
+footer .credit a {
+  color: #eaeaea;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* Modal box */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0, 0.6);
+  overflow: auto;
+}
+.modal-container {
+  position: relative;
+  background-color: #fefefe;
+  color: #8d6458;
+  margin: 15% auto;
+  padding: 1.2rem;
+  border: 1px solid #666;
+  width: 80%;
+  /* animation: animateModal 0.5s; */
+}
+.modal-container .close-icon {
+  position: absolute;
+  right: 1rem;
+}
+.modal-content {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.modal-content img {
+  height: 15rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+}
+.modal-content p {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  margin-top: 1.2rem;
+}
+.modal-content a {
+  display: flex;
+  gap: 1rem;
+  width: 12rem;
+  background-color: #8d6458;
+  color: #fff;
+  margin-top: 1rem;
+  padding: 1rem 1.6rem;
+}
+/* modal animasi */
+/* @keyframes animateModal {
+  0% {
+    top: 300px;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+} */
+
+/* media Queries */
+/* Leptop */
+@media (max-width: 1366px) {
+  html {
+    font-size: 78%;
+  }
+}
+/* Tablet */
+@media (max-width: 750px) {
+  html {
+    font-size: 65.5%;
+  }
+  /* pengaturan untuk hamburger menu */
+  #hamburger-menu {
+    display: inline-block;
+  }
+  .navbar .navbar-nav {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    background-color: #5d4037;
+    width: 30rem;
+    height: 100vh;
+    transition: 0.3s;
+  }
+  .navbar .navbar-nav.active {
+    /* class active akan menimpa navbar-nav nantinya */
+    right: 0;
+  }
+  .navbar .navbar-nav a {
+    color: #f5f5dc;
+    display: block;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-size: 2rem;
+  }
+  .navbar .search-form {
+    width: 90%;
+    right: 2rem;
+  }
+  .about .row {
+    flex-wrap: wrap;
+  }
+  .about .row .about-img img {
+    height: 24rem;
+    object-fit: cover;
+    object-position: center;
+  }
+  .menu p {
+    font-size: 1.2rem;
+  }
+  .contact .row {
+    flex-wrap: wrap;
+  }
+  .contact .row .map {
+    height: 30rem;
+  }
+  .contact .row form {
+    padding-top: 0;
+  }
+  footer {
+    text-align: center;
+  }
+  footer .credit {
+    padding: 0;
+  }
+  .modal-content {
+    flex-wrap: wrap;
+  }
+}
+/* Hanphone */
+@media (max-width: 450px) {
+  html {
+    font-size: 58%;
+  }
+}

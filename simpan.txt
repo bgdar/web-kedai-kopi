@@ -1,0 +1,68 @@
+ 
+ menu icon sebelum d ganti data di app.py dgn alpine.js
+ <div class="menu-card">
+          <div class="product-icons">
+            <a href="#"><li data-feather="shopping-cart"></li></a>
+            <a href="#"><li data-feather="eye" class="detail-button"></li></a>
+          </div>
+          <img
+            src="/menu/coffe 2.jpg"
+            alt="expeso pancung"
+            class="menu-card-img"
+          />
+          <h3 class="menu-card-title">normal coffee</h3>
+          <p class="menu-card-price">IDR 10k</p>
+        </div>
+        <div class="menu-card">
+          <div class="product-icons">
+            <a href="#"><li data-feather="shopping-cart"></li></a>
+            <a href="#"><li data-feather="eye" class="detail-button"></li></a>
+          </div>
+          <img
+            src="/menu/coffe 3.jpg"
+            alt="expeso pancung"
+            class="menu-card-img"
+          />
+
+          <h3 class="menu-card-title">Expresso biuty</h3>
+          <p class="menu-card-price">IDR 17k</p>
+        </div>
+        <div class="menu-card">
+          <div class="product-icons">
+            <a href="#"><li data-feather="shopping-cart"></li></a>
+            <a href="#"><li data-feather="eye" class="detail-button"></li></a>
+          </div>
+          <img
+            src="/menu/coffe 4.jpg"
+            alt="expeso pancung"
+            class="menu-card-img"
+          />
+          <h3 class="menu-card-title">Expresso frezee</h3>
+          <p class="menu-card-price">IDR 26k</p>
+        </div>
+        <div class="menu-card">
+          <div class="product-icons">
+            <a href="#"><li data-feather="shopping-cart"></li></a>
+            <a href="#"><li data-feather="eye" class="detail-button"></li></a>
+          </div>
+          <img
+            src="/menu/coffe 5.jpg"
+            alt="expeso pancung"
+            class="menu-card-img"
+          />
+          <h3 class="menu-card-title">green night</h3>
+          <p class="menu-card-price">IDR 30k</p>
+        </div>
+        <div class="menu-card">
+          <div class="product-icons">
+            <a href="#"><li data-feather="shopping-cart"></li></a>
+            <a href="#"><li data-feather="eye" class="detail-button"></li></a>
+          </div>
+          <img
+            src="/menu/coffe 6.jpg"
+            alt="expeso pancung"
+            class="menu-card-img"
+          />
+          <h3 class="menu-card-title">dark coffee</h3>
+          <p class="menu-card-price">IDR 44k</p>
+        </div>
